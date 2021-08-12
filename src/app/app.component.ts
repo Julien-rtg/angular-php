@@ -23,14 +23,14 @@ import { CarService } from './car.service';
           
     getCars(): void {
         this.carService.getAll().subscribe(
-          (data: Car[]) => {
-            this.cars = data;
-            this.success = 'successful retrieval of the list';
-          },
-          (err) => {
-            console.log(err);
-            this.error = err;
-          }
+            (data: Car[]) => {
+                this.cars = data;
+                this.success = 'successful retrieval of the list';
+            },
+            (err) => {
+                console.log(err);
+                this.error = err;
+            }
         );
-      }
-  }
+    }
+}

@@ -6,13 +6,11 @@ import { map } from 'rxjs/operators';
 import { Car } from './car';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-    baseUrl = 'https://localhost/api';
+    baseUrl = 'http://localhost/angular/cars/api';
 
     constructor(private http: HttpClient) { }
 
