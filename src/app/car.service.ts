@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
 
@@ -19,6 +19,14 @@ export class CarService {
             map((res:any) => {
                 return res['data'];
             })
+        );
+    }
+
+    store(car: Car){
+        return this.http.post(`${this.baseUrl}/store`, {data: car}).pipe(
+            map((res: any) => {
+                return res['data'];
+            }, {responseType : 'text'}),
         );
     }
 }
