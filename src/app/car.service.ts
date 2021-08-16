@@ -29,4 +29,9 @@ export class CarService {
             }, {responseType : 'text'}),
         );
     }
+
+    update(car: Car){
+        return this.http.put(`${this.baseUrl}/update`, {data: car});
+    }
+    
 }

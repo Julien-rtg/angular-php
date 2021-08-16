@@ -54,6 +54,17 @@ import { CarService } from './car.service';
         )
     }
 
+    updateCar(name: any, price: any, id: any){
+        this.resetAlerts();
+
+        this.carService.update({model: name.value, price: price.value, id: +id}).subscribe(
+            (res) => {
+                this.success = 'Update successfully';
+            },
+            (err) => (this.error = err)
+        )
+    }
+
     resetAlerts(){
         this.error = '';
         this.success = '';

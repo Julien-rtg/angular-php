@@ -15,9 +15,7 @@ if(isset($post_data) && !empty($post_data)){
     $model = trim($request->data->model);
     $price = $request->data->price;
     
-    $statement = $con->prepare("INSERT INTO cars (`id`, `model`, `price`) VALUES (null, ':model', ':price')");
-    $statement->bindParam(':model', $model, PDO::PARAM_STR);
-    $statement->bindParam(':price', $price, PDO::PARAM_INT);
+    $statement = $con->prepare("INSERT INTO cars (`id`, `model`, `price`) VALUES (null, '{$model}', '{$price}')");
 
     if($statement->execute()){
         http_response_code(201);
