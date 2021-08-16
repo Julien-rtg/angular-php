@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
 
@@ -33,5 +33,11 @@ export class CarService {
     update(car: Car){
         return this.http.put(`${this.baseUrl}/update`, {data: car});
     }
-    
+
+    delete(id: any){
+        const params = new HttpParams().set('id', id.toString());
+
+        return this.http.delete(`${this.baseUrl}/delete`, { params: params });
+    }
+
 }

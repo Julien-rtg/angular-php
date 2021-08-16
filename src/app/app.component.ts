@@ -65,6 +65,21 @@ import { CarService } from './car.service';
         )
     }
 
+    deleteCar(id: any){
+        this.resetAlerts();
+        this.carService.delete(id).subscribe(
+
+            (res) => {
+                this.cars = this.cars.filter(function(item) {
+                    return item['id'] && +item['id'] !== +id;
+                });
+
+                this.success = 'Deleted succesfully'
+            },
+            (err) => (this.error = err)
+        )
+    }
+
     resetAlerts(){
         this.error = '';
         this.success = '';
