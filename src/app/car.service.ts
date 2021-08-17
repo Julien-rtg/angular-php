@@ -7,7 +7,7 @@ import { Car } from './car';
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CarService {
     baseUrl = 'http://localhost/angular/cars/api';

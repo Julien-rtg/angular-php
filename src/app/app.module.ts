@@ -5,10 +5,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { HiglightsDirective } from './higlights.directive';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HiglightsDirective
     ],
     imports: [
         BrowserModule,

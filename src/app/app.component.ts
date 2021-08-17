@@ -15,7 +15,6 @@ import { CarService } from './car.service';
     error = '';
     success = '';
     
-    
     constructor(private carService: CarService) {}
           
     ngOnInit() {
@@ -27,9 +26,6 @@ import { CarService } from './car.service';
             (data: Car[]) => {
                 this.cars = data;
                 this.success = 'successful retrieval of the list';
-                // setTimeout(() => {
-                //     this.resetAlerts();
-                // }, 4000);
             },
             (err) => {
                 console.log(err);
