@@ -14,7 +14,8 @@ import { CarService } from './car.service';
     car: Car = {model: '', price: 0}; // POST
     error = '';
     success = '';
-    
+    // color = '';
+
     constructor(private carService: CarService) {}
           
     ngOnInit() {

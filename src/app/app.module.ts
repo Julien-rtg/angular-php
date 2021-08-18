@@ -10,7 +10,7 @@ import { HiglightsDirective } from './higlights.directive';
 @NgModule({
     declarations: [
         AppComponent,
-        HiglightsDirective
+        HiglightsDirective,
     ],
     imports: [
         BrowserModule,

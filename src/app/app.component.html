@@ -1,4 +1,4 @@
-<div class="container">
+<div highlight class="container">
     
     <div *ngIf="error">
         <div class="alert alert-danger" role="alert">
@@ -10,7 +10,7 @@
                 {{success}}
             </div>
         </div>
-        <div highlight id="theList">
+        <div id="theList">
             <h2>The list of cars</h2>
             <div *ngFor="let item of cars;let i = index;" class="row">
                 <div class="col-4 mb-3">
@@ -55,6 +55,12 @@
             </form>
 
         </div>
-
+<!-- 
+        <div>
+            <input type="radio" name="colors" (click)="color='lightgreen'">Green 
+            <input type="radio" name="colors" (click)="color='yellow'">Yellow
+            <input type="radio" name="colors" (click)="color='cyan'">Cyan
+        </div> -->
+        
 
 </div>
