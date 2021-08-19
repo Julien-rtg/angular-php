@@ -17,9 +17,11 @@ export class LoopDirective {
     }
 
     ngOnInit(){
-
+        
         for(let i = 0; i < this.loopNumber; i++){
-            this.viewContainer.createEmbeddedView(this.template);
+            this.viewContainer.createEmbeddedView(this.template, {
+                index: i,
+            });
         }
 
     }

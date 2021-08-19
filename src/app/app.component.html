@@ -1,7 +1,7 @@
 <div class="container">
     
-    <div *ngIf="error">
-        <div class="alert alert-danger" role="alert">
+        <div *ngIf="error">
+            <div class="alert alert-danger" role="alert">
                 {{error}}
             </div>
         </div>
@@ -63,9 +63,9 @@
             <input type="radio" name="colors" (click)="color='cyan'">Cyan
         </div>
         
-        <ul>
-            <li *loop="5">Item</li> <!-- loop="5" 5 is a string // [loop] data is now Javascript, so "5" is int // *loop, now the li is replace by binding comment, 
-            comment will be replace by element with templateRef -->
+        <ul *if="5 === 5">
+            <li *loop="5; let index = index">Item {{ index + 1 }}</li> <!-- loop="5" 5 is a string // [loop] data is now Javascript, so "5" is int // *loop, now the li is replace by binding comment, 
+                comment will be replace by element with templateRef -->
         </ul>
 
 

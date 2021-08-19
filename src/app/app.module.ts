@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HiglightsDirective } from './higlights.directive';
 import { LoopDirective } from './loop.directive';
+import { IfDirective } from './if.directive';
 
 @NgModule({
     declarations: [
         AppComponent,
         HiglightsDirective,
         LoopDirective,
+        IfDirective,
     ],
     imports: [
         BrowserModule,
