@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HiglightsDirective } from './higlights.directive';
+import { LoopDirective } from './loop.directive';
 
 @NgModule({
     declarations: [
         AppComponent,
         HiglightsDirective,
+        LoopDirective,
     ],
     imports: [
         BrowserModule,

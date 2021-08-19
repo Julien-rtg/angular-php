@@ -16,25 +16,22 @@ export class HiglightsDirective {
         this.calculator = calculator;
     }
 
-    @HostBinding('style.backgroundColor') // HOST BINDING = bind style.backgroundColor a l'attribut bgColor = yellow par défaut // remplace this.element.style.backgroundColor = yellow
-    bgColor = 'yellow';
-
-    @HostListener('click') // HOSTLISTENER = quand click sur le selector lance la method en dessous // HOST LISTENER BIND DIRECT AVEC LE SELECTOR
-    onClickBg(){
-        if(this.bgScreen === 0){
-            this.bgColor = 'lightgreen';
-            console.log(this.calculator.calculate(100));
-            this.bgScreen = 1;
-        } else {
-            this.bgColor = 'yellow';
-            console.log(this.calculator.calculate(1000));
-            this.bgScreen = 0;
-        }
-    }
-
-    // @HostBinding('style.backgroundColor') // SWITCH BGC WITH INPUT
-    // @Input()
-    // bgColor = '';
+    @HostBinding('style.backgroundColor') // HOST BINDING = bind style.backgroundColor a l'attribut bgColor = yellow par défaut // this.element.style.backgroundColor = yellow
+    @Input()
+    bgColor = '';
+    
+    // @HostListener('click') // HOSTLISTENER = quand click sur le selector lance la method en dessous // HOST LISTENER BIND DIRECT AVEC LE SELECTOR
+    // onClickBg(){
+    //     if(this.bgScreen === 0){
+    //         this.bgColor = 'lightgreen';
+    //         console.log(this.calculator.calculate(100));
+    //         this.bgScreen = 1;
+    //     } else {
+    //         this.bgColor = 'yellow';
+    //         console.log(this.calculator.calculate(1000));
+    //         this.bgScreen = 0;
+    //     }
+    // }
 
     ngOnInit(){
        

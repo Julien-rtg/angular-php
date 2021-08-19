@@ -1,4 +1,4 @@
-<div highlight class="container">
+<div class="container">
     
     <div *ngIf="error">
         <div class="alert alert-danger" role="alert">
@@ -10,7 +10,7 @@
                 {{success}}
             </div>
         </div>
-        <div id="theList">
+        <div highlight [bgColor]="color" id="theList" class="mb-5">
             <h2>The list of cars</h2>
             <div *ngFor="let item of cars;let i = index;" class="row">
                 <div class="col-4 mb-3">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div id="theForm">
+        <div highlight [bgColor]="color" id="theForm">
             <h2>Add a Car</h2>
 
             <form #f="ngForm" name="theForm" (submit)="addCar(f)">
@@ -55,12 +55,18 @@
             </form>
 
         </div>
-<!-- 
-        <div>
+
+        <div class="mb-5 mt-4">
+            <input type="radio" name="colors" (click)="color=''">Default
             <input type="radio" name="colors" (click)="color='lightgreen'">Green 
             <input type="radio" name="colors" (click)="color='yellow'">Yellow
             <input type="radio" name="colors" (click)="color='cyan'">Cyan
-        </div> -->
+        </div>
         
+        <ul>
+            <li *loop="5">Item</li> <!-- loop="5" 5 is a string // [loop] data is now Javascript, so "5" is int // *loop, now the li is replace by binding comment, 
+            comment will be replace by element with templateRef -->
+        </ul>
+
 
 </div>
