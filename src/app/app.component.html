@@ -1,72 +1,77 @@
 <div class="container">
-    
-        <div *ngIf="error">
-            <div class="alert alert-danger" role="alert">
-                {{error}}
+
+    <div *ngIf="error">
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+    </div>
+    <div *ngIf="success">
+        <div class="alert alert-success mt-5" role="alert">
+            {{success}}
+        </div>
+    </div>
+    <div highlight [bgColor]="color" id="theList" class="mb-5">
+        <h2>The list of cars</h2>
+        <div *ngFor="let item of cars;let i = index;" class="row">
+            <div class="col-4 mb-3">
+                <input type="text" [(ngModel)]="cars[i].model" class="form-control" required pattern="^[a-zA-Z ]+$" #model="ngModel" 
+                    [ngClass]="{ 'is-invalid': model.touched && model.invalid }">
+            </div>
+            <div class="col-4">
+                <input type="number" [(ngModel)]="cars[i].price" class="form-control" required #price="ngModel" [ngClass]="{ 'is-invalid': price.touched && price.invalid }">
+            </div>
+            <div class="col-4">
+                <input type="button" value="Update" class="btn btn-success btn-sm" [disabled]="model.invalid || price.invalid" (click)="updateCar(model, price, item.id)">
+                <input type="button" value="Delete" class="btn btn-danger btn-sm" (click)="deleteCar(item.id? item.id:0)">
             </div>
         </div>
-        <div *ngIf="success">
-            <div class="alert alert-success mt-5" role="alert">
-                {{success}}
+    </div>
+
+    <div highlight [bgColor]="color" id="theForm">
+        <h2>Add a Car</h2>
+
+        <form #f="ngForm" name="theForm" (submit)="addCar(f)">
+
+            <div class="form-group">
+                <label>Model</label>
+                <input type="text" class="form-control" name="model" [(ngModel)]="car.model" #carModel="ngModel" required pattern="^[a-zA-Z ]+$">
+                <span class="badge badge-danger" *ngIf="carModel.errors?.required && carModel.touched">
+                    The model name is required
+                </span>
+                <span class="badge badge-danger" *ngIf="carModel.errors?.pattern && carModel.touched">
+                    The model name can only contain the letters a-z or A-Z
+                </span>
             </div>
-        </div>
-        <div highlight [bgColor]="color" id="theList" class="mb-5">
-            <h2>The list of cars</h2>
-            <div *ngFor="let item of cars;let i = index;" class="row">
-                <div class="col-4 mb-3">
-                    <input type="text" [(ngModel)]="cars[i].model" class="form-control" required pattern="^[a-zA-Z ]+$" #model="ngModel" [ngClass]="{ 'is-invalid': model.touched && model.invalid }">
-                </div>
-                <div class="col-4">
-                    <input type="number" [(ngModel)]="cars[i].price" class="form-control" required #price="ngModel" [ngClass]="{ 'is-invalid': price.touched && price.invalid }">
-                </div>
-                <div class="col-4">
-                    <input type="button" value="Update" class="btn btn-success btn-sm" [disabled]="model.invalid || price.invalid" (click)="updateCar(model, price, item.id)">
-                    <input type="button" value="Delete" class="btn btn-danger btn-sm" (click)="deleteCar(item.id? item.id:0)">
-                </div>
-            </div>
-        </div>
-
-        <div highlight [bgColor]="color" id="theForm">
-            <h2>Add a Car</h2>
-
-            <form #f="ngForm" name="theForm" (submit)="addCar(f)">
-
-                <div class="form-group">
-                    <label>Model</label>
-                    <input type="text" class="form-control" name="model" [(ngModel)]="car.model" #carModel="ngModel" required pattern="^[a-zA-Z ]+$">
-                    <span class="badge badge-danger" *ngIf="carModel.errors?.required && carModel.touched">
-                        The model name is required
-                    </span>
-                    <span class="badge badge-danger" *ngIf="carModel.errors?.pattern && carModel.touched">
-                        The model name can only contain the letters a-z or A-Z
-                    </span>
-                </div>
-          
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="number" class="form-control" name="price" required [(ngModel)]="car.price" #carPrice="ngModel">
-                    <span class="badge badge-danger" *ngIf="carPrice.errors?.required && carPrice.touched">
-                        The price is required
-                    </span>
-                </div>
-
-                <button class="btn btn-primary btn-sm" [disabled]="f.invalid">Add</button>
-
-            </form>
-
-        </div>
-
-        <div class="mb-5 mt-4">
-            <input type="radio" name="colors" (click)="color=''">Default
-            <input type="radio" name="colors" (click)="color='lightgreen'">Green 
-            <input type="radio" name="colors" (click)="color='yellow'">Yellow
-            <input type="radio" name="colors" (click)="color='cyan'">Cyan
-        </div>
         
-        <ul *if="5 === 5">
-            <li *loop="5; let index = index">Item {{ index + 1 }}</li> <!-- loop="5" 5 is a string // [loop] data is now Javascript, so "5" is int // *loop, now the li is replace by binding comment, 
-                comment will be replace by element with templateRef -->
-        </ul>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" class="form-control" name="price" required [(ngModel)]="car.price" #carPrice="ngModel">
+                <span class="badge badge-danger" *ngIf="carPrice.errors?.required && carPrice.touched">
+                    The price is required
+                </span>
+            </div>
 
+            <button class="btn btn-primary btn-sm" [disabled]="f.invalid">Add</button>
+
+        </form>
+
+    </div>
+
+    <div class="mb-5 mt-4">
+        <input type="radio" name="colors" (click)="color=''">Default
+        <input type="radio" name="colors" (click)="color='lightgreen'">Green 
+        <input type="radio" name="colors" (click)="color='yellow'">Yellow
+        <input type="radio" name="colors" (click)="color='cyan'">Cyan
+    </div>
+    
+    <ul *if="5 === 5">
+        <li *loop="5; let index = index">Item {{ index + 1 }}</li> <!-- loop="5" 5 is a string // [loop] data is now Javascript, so "5" is int // *loop, now the li is 
+            replace by binding comment, comment will be replace by element with templateRef -->
+    </ul>
+
+    <user user first-name="Julien" last-name="R" [age]="23">
+        <p>Mon élément P</p>
+    </user>
+    <user user first-name="test" last-name="lastName" [age]="21" class="mb-5"></user>
 
 </div>

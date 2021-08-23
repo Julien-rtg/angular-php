@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HiglightsDirective } from './higlights.directive';
 import { LoopDirective } from './loop.directive';
 import { IfDirective } from './if.directive';
+import { UserDirective } from './user.directive';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { IfDirective } from './if.directive';
         HiglightsDirective,
         LoopDirective,
         IfDirective,
+        UserDirective,
     ],
     imports: [
         BrowserModule,

@@ -20,18 +20,18 @@ export class HiglightsDirective {
     @Input()
     bgColor = '';
     
-    // @HostListener('click') // HOSTLISTENER = quand click sur le selector lance la method en dessous // HOST LISTENER BIND DIRECT AVEC LE SELECTOR
-    // onClickBg(){
-    //     if(this.bgScreen === 0){
-    //         this.bgColor = 'lightgreen';
-    //         console.log(this.calculator.calculate(100));
-    //         this.bgScreen = 1;
-    //     } else {
-    //         this.bgColor = 'yellow';
-    //         console.log(this.calculator.calculate(1000));
-    //         this.bgScreen = 0;
-    //     }
-    // }
+    @HostListener('click') // HOSTLISTENER = quand click sur le selector lance la method en dessous // HOST LISTENER BIND DIRECT AVEC LE SELECTOR
+    onClickBg(){
+        if(this.bgScreen === 0){
+            this.bgColor = 'lightgreen';
+            console.log(this.calculator.calculate(100));
+            this.bgScreen = 1;
+        } else {
+            this.bgColor = 'yellow';
+            console.log(this.calculator.calculate(1000));
+            this.bgScreen = 0;
+        }
+    }
 
     ngOnInit(){
        
