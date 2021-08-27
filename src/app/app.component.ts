@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TestScheduler } from 'rxjs/testing';
 import { NgForm } from '@angular/forms';
-import { AsyncSubject, BehaviorSubject, from, fromEvent, interval, Observable, of, ReplaySubject, Subject } from 'rxjs';
-import { map, multicast, refCount } from 'rxjs/operators';
+import { asyncScheduler, AsyncSubject, BehaviorSubject, from, fromEvent, interval, Observable, of, ReplaySubject, Subject } from 'rxjs';
+import { map, multicast, observeOn, refCount } from 'rxjs/operators';
 
 import { Car } from './car';
 import { CarService } from './car.service';
@@ -245,7 +246,33 @@ import { CarService } from './car.service';
         // subject.complete();
 
 
+       /////////// SCHEDULER ///////////
+       
+        // const observable = new Observable((observer) => {
+        //     observer.next(1);
+        //     observer.next(2);
+        //     observer.next(3);
+        //     observer.next(4);
+        //     observer.complete();
+        // }).pipe(
+        //     observeOn(asyncScheduler)
+        // );
+
+        // const finalObservable = {
+        //     next(x:any){
+        //         console.log(x);
+        //     },
+        //     error(err:any) { console.log(err) },
+        //     complete() { console.log('done') },
+        // };
+
+        // console.log('Before Subscribe');
+        // observable.subscribe(finalObservable);
+        // console.log('After Subscribe');
+
+        
+
+
+
     }
-
-
 }
