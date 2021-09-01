@@ -15,15 +15,15 @@ export class CarService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get(`${this.baseUrl}/list`).pipe(
+        return this.http.get(`${this.baseUrl}/ListCar`).pipe(
             map((res:any) => {
                 return res['data'];
-            })
+            },{responseType : 'text'})
         );
     }
 
     store(car: Car){
-        return this.http.post(`${this.baseUrl}/store`, {data: car}).pipe(
+        return this.http.post(`${this.baseUrl}/StoreCar`, {data: car}).pipe(
             map((res: any) => {
                 return res['data'];
             }, {responseType : 'text'}),
@@ -31,13 +31,13 @@ export class CarService {
     }
 
     update(car: Car){
-        return this.http.put(`${this.baseUrl}/update`, {data: car});
+        return this.http.put(`${this.baseUrl}/UpdateCar`, {data: car});
     }
 
     delete(id: any){
         const params = new HttpParams().set('id', id.toString());
 
-        return this.http.delete(`${this.baseUrl}/delete`, { params: params });
+        return this.http.delete(`${this.baseUrl}/DeleteCar`, { params: params });
     }
 
 }
