@@ -18,6 +18,8 @@ import { CarService } from './car.service';
     error?: string;
     success?: string;
     color = '';
+    isAuth = false; // FOR DEVICE COMPONENT
+    deviceOne = "Washed Machine"; // DEVICE
 
     constructor(private carService: CarService) {}
           
@@ -25,9 +27,10 @@ import { CarService } from './car.service';
         this.getCars();
         // this.testObservable();
         // this.operatorObservable();
-        this.subjectObservable();
+        // this.subjectObservable();
+        this.switchAuth();
     }
-          
+    
     getCars(): void {
         this.carService.getAll().subscribe(
             (data: Car[]) => {
@@ -88,54 +91,64 @@ import { CarService } from './car.service';
         this.success = '';
     }
 
-    testObservable() { // Async method using observable, will return the subscriber.next(4) after the console.log('just after subscribe')
-        const observable = new Observable(subscriber => {
-            subscriber.next(1);
-            subscriber.next(2);
-            subscriber.next(3);
-            setTimeout(() => {
-                subscriber.next(4);
-            }, 1000);
-        
-        });
-
-        console.log('just before subscribe');
-        const subs = observable.subscribe({
-            next(x) {
-                console.log('got value : ' + x)
-            },
-            error(err) {
-                console.log(err);
-            },
-            complete() {
-                console.log('done')
-            },
-        });
-        console.log('just after subscribe');
+    switchAuth(){
+        setTimeout(() => {
+            this.isAuth = true;
+        }, 2000)
     }
 
+    TurnOn(){
+        console.log("Turn On");
+    }
 
-    operatorObservable(){
-        const operatorObs = 
-        of(1,2,3)
-        .pipe(map((x) => x * x))
-        .subscribe((v) => console.log(`value : ${v}`));
+    // testObservable() { // Async method using observable, will return the subscriber.next(4) after the console.log('just after subscribe')
+    //     const observable = new Observable(subscriber => {
+    //         subscriber.next(1);
+    //         subscriber.next(2);
+    //         subscriber.next(3);
+    //         setTimeout(() => {
+    //             subscriber.next(4);
+    //         }, 1000);
+        
+    //     });
 
-        const clicks = fromEvent<MouseEvent>(document, 'click');
-        const positions = clicks.pipe(map(ev => ev.clientX));
-        const subscribe = positions.subscribe({ // MUST USE THREE OBVSERVER FUNCTION WHEN SUBSCRIBING
-            next(x) {
-                console.log(x)
-            },
-            error(err){ console.log(err) },
-            complete(){ 'done' },
-        });
+    //     console.log('just before subscribe');
+    //     const subs = observable.subscribe({
+    //         next(x) {
+    //             console.log('got value : ' + x)
+    //         },
+    //         error(err) {
+    //             console.log(err);
+    //         },
+    //         complete() {
+    //             console.log('done')
+    //         },
+    //     });
+    //     console.log('just after subscribe');
+    // }
+
+
+    // operatorObservable(){
+    //     const operatorObs = 
+    //     of(1,2,3)
+    //     .pipe(map((x) => x * x))
+    //     .subscribe((v) => console.log(`value : ${v}`));
+
+    //     const clicks = fromEvent<MouseEvent>(document, 'click');
+    //     const positions = clicks.pipe(map(ev => ev.clientX));
+    //     const subscribe = positions.subscribe({ // MUST USE THREE OBVSERVER FUNCTION WHEN SUBSCRIBING
+    //         next(x) {
+    //             console.log(x)
+    //         },
+    //         error(err){ console.log(err) },
+    //         complete(){ 'done' },
+    //     });
        
         
-        setTimeout(() => { // CANCEL THE SUBSCRIBE AFTER 2000MS
-            subscribe.unsubscribe();
-        }, 2000);
-    }
+    //     setTimeout(() => { // CANCEL THE SUBSCRIBE AFTER 2000MS
+    //         subscribe.unsubscribe();
+    //     }, 2000);
+    // }
 
     subjectObservable() {
 
@@ -269,9 +282,6 @@ import { CarService } from './car.service';
         // console.log('Before Subscribe');
         // observable.subscribe(finalObservable);
         // console.log('After Subscribe');
-
-        
-
 
 
     }

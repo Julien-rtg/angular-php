@@ -74,4 +74,15 @@
     </user>
     <user user first-name="test" last-name="lastName" [age]="21" class="mb-5"></user>
 
+    <app-test></app-test>
+
+    <ul class="list-group">
+        <app-device [deviceName]="deviceOne" [deviceStatus]="'éteint'"></app-device>
+    </ul>
+
+    <div class="mb-5">
+        <button class="btn btn-success" [disabled]="!isAuth" (click)="TurnOn()">Turn on</button>
+        <p *ngIf="!isAuth">Turning on...</p>
+    </div>
+
 </div>

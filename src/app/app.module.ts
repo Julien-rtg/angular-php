@@ -9,6 +9,8 @@ import { HiglightsDirective } from './higlights.directive';
 import { LoopDirective } from './loop.directive';
 import { IfDirective } from './if.directive';
 import { UserDirective } from './user.directive';
+import { TestComponent } from './test/test.component';
+import { DeviceComponent } from './device/device.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +19,8 @@ import { UserDirective } from './user.directive';
         LoopDirective,
         IfDirective,
         UserDirective,
+        TestComponent,
+        DeviceComponent,
     ],
     imports: [
         BrowserModule,
